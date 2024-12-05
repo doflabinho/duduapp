@@ -1,0 +1,31 @@
+/* CSS for Typewriter Effect */
+.text-container {
+    position: absolute; /* Fixiert die Position relativ zum Eltern-Element */
+    top: 20%; /* Verschiebt die Box 20% von der oberen Kante */
+    left: 50%; /* Verschiebt die Box horizontal */
+    transform: translate(-50%, -20%); /* Zentriert die Box */
+    text-align: center; /* Textzentrierung innerhalb der Box */
+    margin-top: 20px;
+    z-index: 100; /* Sicherstellen, dass es über dem Hintergrund ist */
+}
+
+.typewriter {
+    font-family: 'Courier', monospace;
+    font-size: 24px;
+    color: white;
+    white-space: pre-line; /* Damit Zeilenumbrüche korrekt dargestellt werden */
+    overflow: hidden;
+    border-right: 4px solid; /* Wenn du den Blink-Caret-Effekt möchtest */
+    z-index: 101; /* Höher als das übergeordnete Element */
+}
+
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: white }
+}

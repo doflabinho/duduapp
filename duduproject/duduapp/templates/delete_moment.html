@@ -1,0 +1,18 @@
+<!-- confirm_delete.html -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Moment Löschen bestätigen</title>
+</head>
+<body>
+    <h1>Confirmation Delete Moment</h1>
+    <p>Do you really want to delete this moment?</p>
+    <p><strong>{{ moment.description }}</strong></p>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Yes, delete please sir</button>
+        <a href="{% url 'embarrasing_moments_list' %}">Cancel</a>
+    </form>
+</body>
+</html>

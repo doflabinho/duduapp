@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vokabeln lernen</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'duduapp/css/vocabulary.css' %}">
+</head>
+<body>
+    <div class="center-box">
+        <h1>Our Words</h1>
+
+        <p>
+            Welcome to our Page for learning german-portuguese!
+            Here we can learn vocabularies from both languages and you can categorize them and put a difficulty level on the words.
+            I developed this page to help you learn effectively german and me portuguese and also having fun doing it.
+            You can always add new vocabularies into our list. Let's master these languages together!
+        </p>
+        
+
+        <!-- Button zum Hinzufügen einer neuen Vokabel -->
+        <a href="{% url 'add_vocabulary' %}" class="btn">Add new vocab</a>
+        
+        <!-- Button zum Starten des Quizmodus -->
+        <a href="{% url 'quiz_mode' %}" class="btn">Start Quizmode</a>
+        <a href="{% url 'home' %}" class="btn">Back to Homepage</a>
+
+        <hr>
+
+        <!-- Suchformular -->
+        <form method="GET" action="{% url 'vocabulary_list' %}">
+            <div>
+                <label for="query">Search word:</label>
+                <input type="text" id="query" name="query" value="{{ request.GET.query }}">
+            </div>
+            
+            <div>
+                <label for="category">Filter by:</label>
+                <select id="category" name="category">
+                    <option value="">All categories</option>
+                    {% for category in categories %}
+                    <option value="{{ category }}" {% if request.GET.category == category %}selected{% endif %}>{{ category }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        
+            <button type="submit">Search</button>
+        </form>
+
+        <hr>
+
+        <!-- Anzeige der Vokabeln in einer Tabelle oder Liste -->
+        <div class="vocabulary-list-container">
+            {% for vocab in vocabularies %}
+            <div class="vocabulary-item">
+                <p><strong>{{ vocab.german_word }}</strong> - {{ vocab.portuguese_word }}</p>
+                <a href="{% url 'edit_vocabulary' pk=vocab.pk %}" class="btn">Edit</a>
+                <form action="{% url 'delete_vocabulary' pk=vocab.pk %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="delete-btn">Delete</button>
+                </form>
+            </div>
+            {% empty %}
+            <p>No vocabulary in quiz</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

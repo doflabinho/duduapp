@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ time_together.title }} - Details</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'duduapp/css/times.css' %}">
+</head>
+<body>
+    <div class="center-box">
+        <h1>{{ time_together.title }}</h1>
+        <p><strong>date:</strong> {{ time_together.start_time }} - {{ time_together.end_time }}</p>
+
+        <!-- Button zum Hinzufügen eines neuen Eintrags -->
+        <a href="{% url 'add_time_together_entry' pk=time_together.pk %}" class="btn">Add a new moment</a>
+
+        <hr>
+
+        <!-- Sammlung der Einträge -->
+        <div class="entries-container">
+            {% for entry in entries %}
+                <div class="entry-item-box">
+                    <h3>{{ entry.title }}</h3>
+                    <p><strong>{{ entry.description }}</strong></p>
+                    <p><strong>Bubu/Dudu Notes:</strong> {{ entry.special_notes }}</p>
+
+                    <!-- Button zum Bearbeiten eines Eintrags -->
+                    <a href="{% url 'edit_time_together_entry' pk=entry.pk %}" class="edit-btn">Edit</a>
+                    <!-- Button zum Löschen eines Eintrags -->
+                    <form action="{% url 'delete_time_together_entry' pk=entry.pk %}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="delete-btn">Delete</button>
+                    </form>
+                </div>
+            {% empty %}
+                <p>No entries yet.</p>
+            {% endfor %}
+        </div>
+
+        <!-- Button zum Zurück zur Liste der TimeTogethers -->
+        <a href="{% url 'time_together_list' %}" class="btn">Back to List</a>
+    </div>
+</body>
+</html>
+

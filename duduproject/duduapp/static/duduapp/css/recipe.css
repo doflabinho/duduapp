@@ -1,0 +1,104 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.intro-frame {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    border: 2px solid #8B4513;
+    border-radius: 10px;
+    background-color: #FAF4E6;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.intro-frame h1 {
+    font-size: 2em;
+    color: #8B4513;
+    margin-bottom: 10px;
+}
+
+.intro-frame p {
+    font-size: 1.1em;
+    color: #333333;
+    line-height: 1.6em;
+}
+
+.recipe-list {
+    width: 100%;
+    max-width: 900px; /* Increase the container width to allow for wider entries */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.recipe-entry {
+    width: 100%;
+    max-width: 700px; /* Make entries longer and less square */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px 20px; /* Add padding for a balanced look */
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.recipe-entry h2 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.recipe-entry a {
+    text-decoration: none;
+    color: #333;
+}
+
+.delete-btn {
+    background-color: #e74c3c;
+    color: #fff !important;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.2s;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+.centered-btn {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.centered-btn .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.centered-btn .btn:hover {
+    background-color: #45a049;
+}
+
+
+

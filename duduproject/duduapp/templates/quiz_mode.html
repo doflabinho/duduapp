@@ -1,0 +1,53 @@
+<!-- quiz_mode.html -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizmodus</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'duduapp/css/quiz.css' %}">
+</head>
+<body>
+    <h1>Quizmode</h1>
+    <a href="{% url 'vocabulary_list' %}" class="btn">Back to Word List</a>
+    <div class="quiz-container">
+        <p>Translate the word:</p>
+
+        <h2>
+            {% if vocab %}
+                {{ vocab.german_word }}
+            {% else %}
+                No vocab available
+            {% endif %}
+        </h2>
+        
+        
+
+        <!-- Form für Antwort prüfen -->
+        <form id="quiz-form" action="{% url 'check_answer' %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="vocab_id" value="{{ vocab.id }}">
+            <input type="hidden" name="language" value="portuguese">
+            <input type="text" name="user_answer" placeholder="Deine Antwort">
+            <button type="submit">Check answer</button>
+        </form>
+
+        <!-- Anzeige des Ergebnisses -->
+        <div id="result">
+            {% if result %}
+                <p>{{ result }}</p>
+            {% endif %}
+        </div>
+
+        <!-- Button für die nächste Vokabel -->
+        <form action="{% url 'quiz_mode' %}" method="GET">
+            <button type="submit">Reset</button>
+        </form>
+    </div>
+</body>
+</html>
+
+
+
+

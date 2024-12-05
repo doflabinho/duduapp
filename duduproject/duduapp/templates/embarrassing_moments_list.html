@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Peinliche Momente</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'duduapp/css/moments.css' %}">
+</head>
+<body>
+    <h1>Dudu and Bubu most embarrassing/funny moments</h1>
+    <p class="intro-text">
+        In every relationship, there are unforgettable, funny, and sometimes downright embarrassing moments that make us laugh, bond, and grow closer. This page is a place for us to celebrate our funniest silliest times together. Whether it’s a cringe-worthy memory or a hilarious moment we’ll never live down, we’ve captured it here to remind ourselves of how much joy and laughter we share.
+    
+        Browse through our collection, ranked on a "scale of embarrassment" from 1 to 10, and feel free to relive our shared memories that make us perfectly imperfect!
+    </p>
+    <a href="{% url 'add_embarrassing_moment' %}" class="btn">Add a new embarrassing/funny moment</a>
+    <a href="{% url 'home' %}" class="btn">Back to Homepage</a>
+    <div class="moments-list">
+        {% for moment in moments %}
+            <div class="moment-bubble">
+                <p>{{ moment.description }}</p>
+                <span class="embarrassment-level">Scale of Embarrassment: {{ moment.embarrassment_level }}/10</span>
+                <a href="{% url 'delete_moment' pk=moment.pk %}" class="btn delete-btn">Delete</a>
+            </div>
+        {% endfor %}
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,48 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.dream-bubble {
+    background-color: #e0f7fa;
+    border: 1px solid #b2ebf2;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #00796b;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-bottom: 15px;
+}
+
+
+.edit-btn {
+    background-color: #4CAF50;
+}
+
+.delete-btn {
+    background-color: #f44336;
+}
+
+.intro-text {
+    background-color: #2699f0; /* Light red background */
+    color: rgb(248, 248, 248); /* Darker red text color */
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #008ae6; /* Border for emphasis */
+    margin-bottom: 20px;
+}
+
+h1 {
+    text-align: center; /* Zentriert den Titel */
+    color: #66b3ff; /* Gleiche Grundfarbe wie die Buttons */
+    font-size: 2.5em; /* Größe des Titels anpassen */
+    font-weight: bold; /* Fettgedruckt */
+    margin-bottom: 20px; /* Abstand zum Text darunter */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Leichter Schatten für Tiefe */
+}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Picture</title>
+</head>
+<body>
+    <h1>Delete Picture</h1>
+    <p>Are you sure to delete: "{{ image.title }}"</p>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Yes Sir, Delete!</button>
+    </form>
+    <a href="{% url 'date_detail' date_id=image.date.id %}">Go Back</a>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bearbeiten - {{ entry.title }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'duduapp/css/times.css' %}">
+</head>
+<body>
+    <div class="center-box">
+        <h1>Bearbeite Eintrag: {{ entry.title }}</h1>
+        
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn">Speichern</button>
+        </form>
+
+        <a href="{% url 'time_together_detail' pk=entry.time_together.pk %}" class="btn">Zurück</a>
+    </div>
+</body>
+</html>

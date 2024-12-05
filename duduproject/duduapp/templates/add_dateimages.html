@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Pictures for {{ date.title }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    {% load static %}
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Pictures for {{ date.title }}</h1>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ image_form.as_p }}
+            <button type="submit" class="btn btn-success">Add a picture</button>
+        </form>
+
+        <h2>Existing Pictures</h2>
+        <ul class="list-group mt-4">
+            {% for image in images %}
+                <li class="list-group-item">
+                    <img src="{{ image.image.url }}" style="max-width: 100px;" alt="Bild">
+                    <form method="post" action="{% url 'delete_image' image.id %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </li>
+            {% empty %}
+                <li class="list-group-item">Keine Bilder vorhanden.</li>
+            {% endfor %}
+        </ul>
+
+        <a href="{% url 'date_list' %}" class="btn btn-secondary mt-4">Back to List</a>
+    </div>
+</body>
+</html>
+

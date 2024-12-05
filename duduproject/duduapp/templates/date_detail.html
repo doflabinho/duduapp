@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ date.title }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    {% load static %}
+    <style>
+        .carousel-inner img {
+            max-height: 400px; /* Maximale Höhe des Bildes */
+            object-fit: contain; /* Bilder proportional zuschneiden */
+            width: 100%; /* Bildbreite auf 100% setzen */
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ date.title }}</h1>
+    <p>Status: {{ date.status }}</p>
+    <p>Notes: {{ date.notes }}</p>
+
+    <p><a href="{% url 'date_list' %}">Back to List</a></p>
+
+    <!-- Slideshow -->
+    <div id="imageCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            {% for image in date.images.all %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <img src="{{ image.image.url }}" class="d-block w-100" alt="{{ image.title }}">
+                </div>
+            {% empty %}
+                <div class="carousel-item active">
+                    <img src="{% static 'duduapp/images/homepage.png' %}" class="d-block w-100" alt="Platzhalter">
+                </div>
+            {% endfor %}
+        </div>
+        <a class="carousel-control-prev" href="#imageCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Vorheriges Bild</span>
+        </a>
+        <a class="carousel-control-next" href="#imageCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Nächstes Bild</span>
+        </a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+

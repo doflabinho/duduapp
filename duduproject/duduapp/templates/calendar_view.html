@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Kalender</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'duduapp/css/calendar.css' %}">
+</head>
+<body>
+    <h1>Kalender</h1>
+    
+    <div class="navigation">
+        <a href="{% url 'calendar_by_month' prev_month.year prev_month.month %}">&laquo; Vorheriger Monat</a>
+        <span>{{ month }} / {{ year }}</span>
+        <a href="{% url 'calendar_by_month' next_month.year next_month.month %}">Nächster Monat &raquo;</a>
+    </div>
+
+    <div class="calendar">
+        {% for week in calendar %}
+            <div class="week">
+                {% for day in week %}
+                    <div class="day">
+                        <span class="date">{{ day }}</span>
+                        
+                        {% with date=day %}
+                            {% if date in diary_entries %}
+                                <!-- Tagebucheinträge anzeigen -->
+                                <div class="entries">
+                                    {% for entry in diary_entries[date] %}
+                                        <div class="entry">
+                                            <a href="{% url 'view_diary_entry' entry.id %}">Eintrag anzeigen</a> |
+                                            <a href="{% url 'edit_diary_entry' entry.id %}">Bearbeiten</a>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                <!-- Link zum Hinzufügen eines Eintrags -->
+                                <a href="{% url 'add_diary_entry' date=date %}" class="add-entry-link">
+                                    Tagebucheintrag hinzufügen
+                                </a>
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <h2>Tagebucheinträge</h2>
+
+</body>
+</html>
+
+
+
+

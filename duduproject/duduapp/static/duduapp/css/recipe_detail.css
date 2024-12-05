@@ -1,0 +1,89 @@
+/* Center all content */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 2em;
+    color: #333;
+    margin-top: 20px;
+}
+
+/* Main container to wrap the recipe detail */
+.recipe-container {
+    width: 80%;
+    max-width: 800px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Centering and styling each section with border */
+.ingredients-section, .steps-section, .tried, .ratings {
+    border-top: 1px solid #eee;
+    padding: 15px 0;
+    text-align: center;
+}
+
+/* Section headings */
+.ingredients-section h2, .steps-section h2 {
+    font-size: 1.5em;
+    color: #555;
+    margin: 0;
+}
+
+/* List styling for ingredients and steps */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+ul li {
+    font-size: 1em;
+    color: #666;
+    margin: 5px 0;
+}
+
+/* Checkbox styling for 'Made Before' section */
+.tried label {
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+/* Ratings styling */
+.ratings p {
+    font-size: 1em;
+    margin: 5px 0;
+    color: #333;
+}
+
+/* Button styling */
+.btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    margin-top: 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction</title>
+    {% load static %}
+    <link rel="icon" type="image/png" href="{% static 'duduapp/images/favicon.png' %}" />
+    <link rel="stylesheet" href="{% static 'duduapp/css/nightsky.css' %}" />
+    <link rel="stylesheet" href="{% static 'duduapp/css/typewriter.css' %}" />
+    <style>
+        .clickable-image {
+            display: block;
+            margin: 0 auto; /* Zentriert das Bild */
+            max-width: 300px; /* Ändere die Bildgröße nach Bedarf */
+            cursor: pointer; /* Ändert den Mauszeiger auf Zeiger (Hand) */
+            transition: transform 0.2s ease; /* Animation für den Hover-Effekt */
+        }
+
+        .clickable-image:hover {
+            transform: scale(1.05); /* Vergrößert das Bild leicht beim Hovern */
+        }
+    </style>
+</head>
+<body>
+    <div class="night">
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+      </div>
+      <div class="text-container">
+        <h1 id="text1" class="typewriter"></h1>
+    </div>
+
+        <!-- Hier wird das Bild eingefügt -->
+        <div style="position: absolute; bottom: 5px; left: 50%; transform: translateX(-50%); z-index: 10;">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'duduapp/images/bubududuintro3.png' %}" class="clickable-image" alt="Zurück zur Homepage" style="max-width: 300px;">
+            </a>
+        </div>
+
+    <!-- Hier wird der Live-Timer eingefügt -->
+    <div id="relationship-timer" style="position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); font-size: 20px; color: white; z-index: 101;"></div>
+
+    <audio autoplay loop>
+        <source src="{% static 'duduapp/audio/Steal-The-Show_320(PaglaSongs).mp3' %}" type="audio/mpeg">
+    </audio>
+
+    <script src="{% static 'duduapp/js/typewriter.js' %}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const startDate = new Date('2022-12-12T00:00:00'); // Startdatum eurer Beziehung
+            const timerElement = document.getElementById('relationship-timer');
+
+            function updateTimer() {
+                const now = new Date();
+                const timeDiff = now - startDate;
+
+                const years = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 365));
+                const days = Math.floor((timeDiff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+                timerElement.innerHTML = `Bubu & Dudu together for: ${years} y, ${days} d, ${hours} h, ${minutes} min, ${seconds} sec`;
+            }
+
+            // Timer jede Sekunde aktualisieren
+            setInterval(updateTimer, 1000);
+        });
+    </script>
+</body>
+</html>

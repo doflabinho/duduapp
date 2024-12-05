@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Unsere Träume</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'duduapp/css/dreams.css' %}">
+</head>
+<body>
+    <h1>Welcome to our Dream Journal</h1>
+    <p class="intro-text">Our dreams reveal the hopes, aspirations, and unique moments we cherish, whether they're visions of the future or weird moments. This page is a place for us to capture our dreams together, celebrating every imagination we have.
+
+        Scroll through our dreams, relive the ones we've captured. This space is a collection of our dreams. </p>
+    <a href="{% url 'add_dream' %}" class="btn">Add a new dream</a>
+    <a href="{% url 'home' %}" class="btn">Back to Homepage</a>
+    <div class="dreams-list">
+        {% for dream in dreams %}
+            <div class="dream-bubble">
+                <h3>{{ dream.title }}</h3>
+                <p>{{ dream.description }}</p>
+                <a href="{% url 'edit_dream' dream.id %}" class="btn edit-btn">Edit</a>
+                <a href="{% url 'delete_dream' dream.id %}" class="btn delete-btn">Delete</a>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
+

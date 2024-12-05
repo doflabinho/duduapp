@@ -1,0 +1,43 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif; /* Optional: Schriftart */
+    background-color: #f0f0f0; /* Optional: Hintergrundfarbe */
+    margin: 0; /* Entferne den Standard-Margin */
+    display: flex; /* Flexbox für die Zentrierung */
+    justify-content: center; /* Horizontale Zentrierung */
+    align-items: center; /* Vertikale Zentrierung */
+    height: 100vh; /* Vollständige Höhe des Ansichtsfensters */
+    background-image: url('../images/homepage.png');
+    background-size: cover; /* Bild so anpassen, dass es den gesamten Hintergrund ausfüllt */
+    background-position: center; /* Bild zentrieren */
+    background-repeat: no-repeat; /* Bild nicht wiederholen */
+    filter: brightness(0.8); /* Optional: Bild dunkler machen */
+}
+
+.center-box {
+    background-color: white; /* Hintergrundfarbe der Box */
+    padding: 20px; /* Innenabstand */
+    border-radius: 8px; /* Abgerundete Ecken */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Schlagschatten */
+    text-align: center; /* Text zentrieren */
+}
+
+.button-container {
+    margin-top: 20px; /* Abstand nach oben */
+}
+
+.btn {
+    display: inline-block; /* Schaltfläche inline */
+    padding: 10px 20px; /* Innenabstand der Schaltfläche */
+    margin: 5px; /* Abstand zwischen Schaltflächen */
+    background-color: #007bff; /* Hintergrundfarbe */
+    color: white; /* Textfarbe */
+    text-decoration: none; /* Unterstreichung entfernen */
+    border-radius: 5px; /* Abgerundete Ecken der Schaltfläche */
+    transition: background-color 0.3s; /* Übergangseffekt */
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Hintergrundfarbe beim Hover */
+}

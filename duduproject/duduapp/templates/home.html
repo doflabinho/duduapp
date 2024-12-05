@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Startseite</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'duduapp/css/styles.css' %}">
+</head>
+<body>
+    <div class="center-box">
+        <h1>Welcome my Love!</h1>
+        <p> Here you can choose from different functions of our love app!</p>
+        <div class="button-container">
+            <a href="{% url 'introduction' %}" class="btn">Introduction</a>
+            <a href="{% url 'movie_list' %}" class="btn">Our Movie/TV-Show List</a>
+            <a href="{% url 'book_list' %}" class="btn">Our Book List</a>
+            <a href="{% url 'date_list' %}" class="btn">Our Date Bucketlist</a>
+            <a href="{% url 'embarrassing_moments_list' %}" class="btn">Top Embarrassing/funny moments</a>
+            <a href="{% url 'dream_list' %}" class="btn">Our Dreamlist</a>
+            <a href="{% url 'recipe_list' %}" class="btn">Our Baking/Cooking List</a>
+            <a href="https://open.spotify.com/playlist/7o8OMT6VIfhwwB7zgQXOwM?si=d42b2044b2014e51" class="btn" target="_blank">Our Spotify Playlist</a>
+            <a href="{% url 'time_together_list' %}" class="btn">Our Times Together</a>
+            <a href="{% url 'vocabulary_list' %}" class="btn">Our Language App</a>
+            <a href="https://www.youtube.com/watch?v=tkfBnTK7SM4" class="btn" target="_blank">Our 1 year anniversy video</a>
+            <!-- Füge weitere Buttons hinzu, falls du andere Seiten verlinken möchtest -->
+            
+        </div>
+    </div>
+</body>
+</html>
+

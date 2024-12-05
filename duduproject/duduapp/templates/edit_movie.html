@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Movie</title>
+</head>
+<body>
+    <h1>Edit {{ movie.title }}</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+        <!-- Dropdown-Menü für Typ (Movie oder TV-Show) -->
+        <label for="id_type">Type:</label>
+        <select name="type" id="id_type">
+            <option value="movie" {% if movie.type == 'movie' %}selected{% endif %}>Movie</option>
+            <option value="tv-show" {% if movie.type == 'tv-show' %}selected{% endif %}>TV Show</option>
+        </select>
+    
+        <button type="submit">Save</button>
+    </form>
+
+    <a href="{% url 'movie_list' %}">Back to Movie List</a>
+</body>
+</html>
+

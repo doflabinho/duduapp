@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Movielist ♡</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'duduapp/css/booklist.css' %}">
+</head>
+<body>
+    <div class="header-box">
+    <h1>Our Movielist ♥︎</h1>
+    <p class="page-description">
+        Hello my movie partner Mort, This page is dedicated to all the beautiful things we watched and will watch. We can manage our Watchlist here and also a page to remember all the beautiful memories we made, watching a movie or tvshows. Can't wait to fill this table with you until we reach 10000000000000 movies.
+    </p>
+    </div>
+
+    <form method="GET" action="">
+        <!-- Suchfeld für den Titel -->
+        <label for="title">Search by title:</label>
+        <input type="text" name="title" id="title" placeholder="Enter movie title" value="{{ request.GET.title }}">
+
+        <!-- Filterfeld für den Typ hinzufügen -->
+        <label for="type">Filter by Type:</label>
+        <select name="type" id="type">
+                <option value="">All</option>
+                <option value="movie" {% if request.GET.type == 'movie' %}selected{% endif %}>Movie</option>
+                <option value="tv-show" {% if request.GET.type == 'tv-show' %}selected{% endif %}>TV Show</option>
+        </select>
+        
+        <!-- Buttons zum Filtern nach "Watched"-Status -->
+        <label>Watched status:</label>
+        <button type="submit" name="watched" value="watched">We already Watched</button>
+        <button type="submit" name="watched" value="not_watched">Our Watchlist</button>
+        <button type="submit" name="watched" value="">All</button> <!-- Zeige alle Filme -->
+        
+        <button type="submit">Search</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Type</th>
+                <th>Watched Date</th>
+                <th>Watched Status</th>
+                <th>Dudu Rating</th>
+                <th>Bubu Rating</th>
+                <th>Notes</th>  <!-- Neue Spalte für Notizen -->
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for movie in movies %}
+            <tr>
+                <td>{{ movie.title }}</td>
+                <td>{{ movie.get_type_display }}</td>
+                <td>{{ movie.watched_date }}</td>
+                <td>{{ movie.watched_status|yesno:"Yes,No" }}</td>
+                <td>{{ movie.dudu_rating }}</td>
+                <td>{{ movie.bubu_rating }}</td>
+                <td>{{ movie.notes }}</td>
+                <td><a href="{% url 'edit_movie' movie.id %}">Edit</a>
+                    <a href="{% url 'delete_movie' movie.id %}">Delete</a>
+                </td> <!-- Edit-Button -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'add_movie' %}">Add movie</a>
+    <a href="{% url 'home' %}">Back to Homepage</a>
+</body>
+</html>
+

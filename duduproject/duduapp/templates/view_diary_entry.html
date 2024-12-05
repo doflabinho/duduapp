@@ -1,0 +1,12 @@
+<h1>Tagebucheinträge für {{ date }}</h1>
+<ul>
+    {% for entry in entries %}
+        <li>
+            <strong>{{ entry.title }}</strong> - {{ entry.mood }}<br>
+            {{ entry.description }}<br>
+            {% if entry.photo %}<img src="{{ entry.photo.url }}" alt="Foto"><br>{% endif %}
+        </li>
+    {% empty %}
+        <li>Keine Einträge vorhanden.</li>
+    {% endfor %}
+</ul>

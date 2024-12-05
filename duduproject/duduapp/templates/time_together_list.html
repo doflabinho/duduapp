@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unsere Zeiten Zusammen</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'duduapp/css/times.css' %}">
+</head>
+<body>
+    <div class="center-box">
+        <h1>Our times together</h1>
+      
+            <p class="page-description">
+                Here you will find a collection of our times together, a treasure chest of all the moments, memories and adventures we've shared since the beginning of our story.
+                <br><br>
+                Feel free to explore, feel nostalgic and add new memories as we continue to create our love story. Whether it's a small laugh, a grand adventure, or a heartfelt moment, this is where we can keep them all safe.
+                <br><br>
+                With Love Dudu
+            </p>
+        
+        
+        <!-- Button zum Hinzufügen einer neuen TimeTogether -->
+        <a href="{% url 'add_time_together' %}" class="btn">Add a new times together</a>
+        <a href="{% url 'home' %}" class="btn">Back to Homepage</a>
+    
+        <!-- Liste der TimeTogether-Objekte -->
+<div class="time-together-container">
+    {% for time_together in time_togethers %}
+    <a href="{% url 'time_together_detail' pk=time_together.pk %}" class="time-together-item">
+        <h2>{{ time_together.title }}</h2>
+        <p class="date-range">{{ time_together.start_time }} - {{ time_together.end_time }}</p>
+        
+        <!-- Button zum Löschen eines TimeTogether-Eintrags -->
+        <form action="{% url 'delete_time_together' pk=time_together.pk %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="delete-btn">Delete</button>
+        </form>
+    </a>
+    {% endfor %}
+</div>
+    </div>
+</body>
+</html>
+
+
+
+

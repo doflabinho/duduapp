@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete vocabulary</title>
+</head>
+<body>
+    <h1>Do you really want to delete "{{ vocabulary.german_word }} - {{ vocabulary.portuguese_word }}" ?</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Yes, delete</button>
+    </form>
+    <a href="{% url 'vocabulary_list' %}">Cancel</a>
+</body>
+</html>

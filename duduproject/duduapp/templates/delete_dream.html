@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Traum löschen</title>
+</head>
+<body>
+    <h1>Traum löschen</h1>
+    <p>Möchten Sie diesen Traum wirklich löschen: <strong>{{ dream.title }}</strong>?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="delete-btn">Löschen</button>
+    </form>
+    <a href="{% url 'dream_list' %}">Abbrechen</a>
+</body>
+</html>

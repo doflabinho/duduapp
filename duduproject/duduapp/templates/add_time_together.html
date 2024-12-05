@@ -1,0 +1,13 @@
+<div class="center-box">
+    <h1>Add a New Time Together</h1>
+
+    <!-- Formular zum Hinzufügen einer neuen Zeit -->
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- Das Formular wird hier gerendert -->
+
+        <button type="submit" class="btn">Save Time Together</button>
+    </form>
+    
+    <a href="{% url 'time_together_list' %}" class="btn">Back to Time Together List</a>  <!-- Link zurück zur Liste -->
+</div>

@@ -1,0 +1,37 @@
+.header-box {
+    background-color: #a00404; /* Helle Hintergrundfarbe */
+    border: 1px solid #ddd;    /* Dünner Rand um die Box */
+    border-radius: 10px;       /* Abgerundete Ecken */
+    padding: 20px;             /* Innenabstand für Text */
+    margin-bottom: 20px;       /* Abstand zur nächsten Box/Element */
+    text-align: center;        /* Text zentrieren */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Leichter Schatten */
+}
+
+.header-box h1 {
+    font-size: 32px;           /* Größere Schriftgröße für die Überschrift */
+    color: #eeeeee;               /* Dunklere Schriftfarbe */
+    margin-bottom: 10px;       /* Abstand zwischen Überschrift und Text */
+}
+
+.header-box .page-description {
+    font-size: 18px;           /* Angenehme Schriftgröße für den Text */
+    color: #fdfdfd;               /* Graue Schriftfarbe */
+    line-height: 1.6;          /* Bessere Lesbarkeit */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+

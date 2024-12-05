@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeiten zusammen löschen</title>
+</head>
+<body>
+    <h1>Willst du wirklich "{{ time_together.title }}" löschen?</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Ja, löschen</button>
+        <a href="{% url 'time_together_list' %}">Abbrechen</a>
+    </form>
+</body>
+</html>

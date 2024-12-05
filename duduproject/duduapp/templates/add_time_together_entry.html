@@ -1,0 +1,24 @@
+<!-- duduapp/templates/duduapp/add_time_together_entry.html -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a new times together</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'duduapp/css/times.css' %}">
+</head>
+<body>
+    <div class="center-box">
+        <h1>New Entry for "{{ time_together.title }}"</h1>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn">Add new times together</button>
+        </form>
+
+        <a href="{% url 'time_together_detail' pk=time_together.pk %}" class="btn">Back to list</a>
+    </div>
+</body>
+</html>

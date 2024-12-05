@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Peinlichen Moment hinzufügen</title>
+</head>
+<body>
+    <h1>Add a new funny/embarrassing moment</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+    <a href="{% url 'embarrassing_moments_list' %}">Back to list</a>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ recipe.title }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'duduapp/css/recipe_detail.css' %}">
+</head>
+<body>
+    <div class="recipe-container">
+        <h1>{{ recipe.title }}</h1>
+        <p><strong>Description:</strong> {{ recipe.description }}</p>
+
+        <div class="ingredients-section">
+            <h2>Ingredients</h2>
+            <ul>
+                {% for ingredient in ingredients_list %}
+                    <li>{{ ingredient }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="steps-section">
+            <h2>Steps</h2>
+            <ul>
+                {% for step in steps_list %}
+                    <li>{{ forloop.counter }}. {{ step }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="tried">
+            <label>
+                <input type="checkbox" disabled {% if recipe.tried %}checked{% endif %}>
+                Made Before
+            </label>
+        </div>
+
+        <div class="ratings">
+            <p><strong>Dudu's Rating:</strong> {{ recipe.rating_dudu }}/10</p>
+            <p><strong>Bubu's Rating:</strong> {{ recipe.rating_bubu }}/10</p>
+        </div>
+
+        <a href="{% url 'edit_recipe' recipe.id %}" class="btn">Edit</a>
+        <a href="{% url 'recipe_list' %}" class="btn">Back to recipes</a>
+    </div>
+</body>
+
+

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Booklist ♡</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'duduapp/css/booklist.css' %}">
+</head>
+<body>
+    <div class="header-box">
+    <h1>Our Booklist ♡</h1>
+    <p class="page-description">
+        Hello Mister Bubu, This page is dedicated for our reading fascination. In this Booklist you can add our books that we already read, also the books we still want to read. Moreover we can add some comments to the books (like you already seen from Dudu)
+    </p>
+</div>
+    <a href="{% url 'add_book' %}">Add a new book</a>
+    <form method="GET" action="{% url 'book_list' %}">
+        <input type="text" name="title_search" placeholder="Search Book" value="{{ request.GET.title_search }}">
+        <button type="submit">Search</button>
+    </form>
+
+    <form method="GET" action="{% url 'book_list' %}">
+        <button type="submit" name="filter" value="read">Already read</button>
+        <button type="submit" name="filter" value="unread">Our Books we have to read</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Read?</th>
+                <th>Dudu Rating</th>
+                <th>Bubu Rating</th>
+                <th>Notes Dudu</th>
+                <th>Notes Bubu</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr>
+                <td>{{ book.title }}</td>
+                <td>{{ book.read|yesno:"Yes,No" }}</td>
+                <td>{{ book.dudu_rating }}</td>
+                <td>{{ book.bubu_rating }}</td>
+                <td>{{ book.dudu_notes }}</td>
+                <td>{{ book.bubu_notes }}</td>
+                <td><a href="{% url 'edit_book' book.id %}">Edit</a>
+                    <a href="{% url 'delete_book' book.id %}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'home' %}">Back to Homepage</a>
+</body>
+</html>
